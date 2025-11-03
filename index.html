@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorador de API - Cat & Dog Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐱 Cat & Dog Explorer 🐶</h1>
+            <p class="subtitle">Explorador de APIs públicas con asincronía</p>
+        </header>
+
+        <div class="controls">
+            <div class="button-group">
+                <button id="btnCat" class="btn btn-cat">
+                    <span>🐱</span> Ver Gato Aleatorio
+                </button>
+                <button id="btnDog" class="btn btn-dog">
+                    <span>🐶</span> Ver Perro Aleatorio
+                </button>
+                <button id="btnMultiple" class="btn btn-multiple">
+                    <span>🎲</span> Cargar 6 Imágenes
+                </button>
+            </div>
+            
+            <div class="search-group">
+                <input type="text" id="searchInput" placeholder="Buscar raza de gato (ej: siam, pers, beng)">
+                <button id="btnSearch" class="btn btn-search">🔍 Buscar</button>
+            </div>
+        </div>
+
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Cargando imágenes...</p>
+        </div>
+
+        <div id="error" class="error hidden">
+            <p>❌ Error al cargar las imágenes. Intenta de nuevo.</p>
+        </div>
+
+        <div id="imageContainer" class="image-container"></div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-label">Total de imágenes cargadas:</span>
+                <span id="totalImages" class="stat-value">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Llamadas a la API:</span>
+                <span id="apiCalls" class="stat-value">0</span>
+            </div>
+        </div>
+
+        <footer>
+            <p>APIs utilizadas: 
+                <a href="https://thecatapi.com/" target="_blank">The Cat API</a> y 
+                <a href="https://dog.ceo/dog-api/" target="_blank">Dog CEO API</a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

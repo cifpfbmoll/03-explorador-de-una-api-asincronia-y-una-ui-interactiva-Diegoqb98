@@ -1,31 +1,158 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/NJ448ipO)
-# 03- Explorador de una API asincronia y una UI interactiva
 
-- **Descripción del Proyecto**: Una aplicación web que permite a los usuarios buscar y explorar una API pública. Incluye una interfaz simple para ingresar consultas de búsqueda, mostrar resultados en tarjetas, y manejar estados como carga, errores o resultados vacíos. Esto es similar al cliente de Reddit que vimos en clase, pero enfocado en la API de GitHub (o lo que surja) para practicar conceptos como solicitudes HTTP y manejo de datos asíncronos.
-- **Objetivo**: Ampliar el conocimiento básico de Angular, idealmente para reforzar habilidades en frontend development, API integration y gestión de estado reactivo usando signals.
-- **Requisitos Técnicos**:
-  - **Framework**: Angular ~20.3.0, con énfasis en módulos standalone para componentes reutilizables.
-  - **Características Principales**: Utiliza signals para actualizaciones reactivas, servicios para lógica de negocio, y plantillas Angular para UI dinámica. Añade `HttpClientModule` para manejar solicitudes API.
-  - **Dependencias**: Mantiene paquetes como `@angular/core` y `rxjs`; incluye `@angular/common/http` para API calls. Usa versiones compatibles con el proyecto actual para evitar conflictos.
-  - **API**: GitHub API REST (e.g., `https://api.github.com/search/repositories`), que es gratuita y no requiere autenticación para consultas públicas. Las opciones son diversas: Spotify, Facebook, Instagram, TikTok, Shazam, Youtube, Codewars, etc. Como hemos visto en clase, y por aportación unánime, también podréis utilizar API de Guild Wars 2 o League of Legends.
-- **Estructura del Proyecto**:
-  - **Componentes**: Incluye un componente principal como `repo-list.component.ts` (similar a [subreddit-column.component.ts](/reddit-client/src/app/components/subreddit-column.component.ts:0:0-0:0)), con subcomponentes para detalles de repositorios. Añade un `search-bar.component.ts` para la entrada de usuario.
-  - **Servicios**: Un `github.service.ts` (por ejemplo) que encapsula llamadas API, con métodos como `searchRepositories(query: string)` para devolver datos en formato observable.
-  - **Plantillas**: Usa directivas como `@if`, `@for` y eventos para una UI interactiva, con estilos CSS para una apariencia moderna (p. ej., usando clases como `column`, `loading`).
-- **Detalles de la API**: Debes usar, por ejemplo, el endpoint `GET /search/repositories` con parámetros como `q` para la consulta. Ejemplo de llamada: `this.http.get('https://api.github.com/search/repositories', { params: { q: query } })`. Enfatiza el manejo de errores HTTP (e.g., códigos 403 para límites de tasa) y la transformación de respuestas.
-- **Características Adicionales**: Para enriquecer el proyecto, sugiero agregar:
-  - Filtrado de repositorios (por ejemplo por lenguaje o estrellas). La mayoría de APIs que os proprongo tienen algún sistema similar.
-  - Un componente para mostrar detalles de la información al hacer clic.
-  - Integración con notificaciones usando signals para actualizaciones en tiempo real.
- 
-  # Formato de entrega:
+# 🐱 Cat & Dog Explorer - Explorador de API con Asincronía
 
-  - Vuestra propuesta de proyecto y documentación del mismo.
-  - Para la generación de la documentación está permitida el uso (pero no el abuso) de algunas IAs siempre y cuando reviséis lo que entregáis.
-  - El código fuente del proyecto en este repo.
-  - Algunas imágenes del funcionamiento de vuestro proyecto en local o en github pages (esto último es totalmente voluntario).
- 
- # Fecha de entrega
+Proyecto interactivo que demuestra el uso de APIs públicas, programación asíncrona en JavaScript y una interfaz de usuario dinámica.
 
-  - El lunes 3 de noviembre a las 23:59 h.
-  - Tened en cuenta la penalización establecida como es habitual.
+## 🚀 Características
+
+- ✨ **Interfaz moderna y responsiva** con animaciones CSS
+- 🔄 **Programación asíncrona** usando `async/await` y `Promise.all()`
+- 🌐 **Integración con APIs públicas**:
+  - [The Cat API](https://thecatapi.com/) - Para imágenes de gatos
+  - [Dog CEO API](https://dog.ceo/dog-api/) - Para imágenes de perros
+- 🔍 **Búsqueda de razas** de gatos en tiempo real
+- 📊 **Estadísticas** de uso (imágenes cargadas y llamadas a la API)
+- 🎲 **Carga múltiple** de imágenes usando `Promise.all()`
+
+## 📋 Funcionalidades
+
+1. **Ver Gato Aleatorio**: Carga una imagen aleatoria de gato
+2. **Ver Perro Aleatorio**: Carga una imagen aleatoria de perro
+3. **Cargar 6 Imágenes**: Carga 3 gatos y 3 perros simultáneamente usando `Promise.all()`
+4. **Buscar por Raza**: Busca y muestra imágenes de una raza específica de gato
+
+## 🛠️ Tecnologías Utilizadas
+
+- **HTML5**: Estructura semántica
+- **CSS3**: 
+  - Flexbox y Grid Layout
+  - Animaciones y transiciones
+  - Diseño responsivo
+  - Gradientes modernos
+- **JavaScript ES6+**:
+  - Async/Await
+  - Fetch API
+  - Promise.all()
+  - Manipulación del DOM
+  - Event Listeners
+
+## 📦 Estructura del Proyecto
+
+```
+03-explorador-de-una-api-asincronia-y-una-ui-interactiva/
+│
+├── index.html          # Estructura HTML de la aplicación
+├── styles.css          # Estilos CSS con diseño moderno
+├── app.js             # Lógica JavaScript con asincronía
+└── README.md          # Documentación del proyecto
+```
+
+## 🚀 Cómo Ejecutar el Proyecto
+
+1. **Clona o descarga** este repositorio
+2. **Abre** el archivo `index.html` en tu navegador web
+3. **¡Disfruta!** Explora las diferentes funcionalidades
+
+No requiere instalación de dependencias ni servidor backend. Funciona completamente en el navegador.
+
+## 💡 Conceptos Demostrados
+
+### 1. Asincronía con Async/Await
+
+```javascript
+async function loadRandomCat() {
+    try {
+        const response = await fetch(API_URLS.catRandom);
+        const data = await response.json();
+        // Procesar datos...
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+```
+
+### 2. Promesas Múltiples con Promise.all()
+
+```javascript
+const promises = [
+    fetch(API_URLS.catRandom).then(r => r.json()),
+    fetch(API_URLS.dogRandom).then(r => r.json())
+];
+const results = await Promise.all(promises);
+```
+
+### 3. Manejo de Estados
+
+```javascript
+const state = {
+    totalImages: 0,
+    apiCalls: 0
+};
+```
+
+### 4. Manipulación Dinámica del DOM
+
+```javascript
+function createImageCard(imageUrl, title, type) {
+    const card = document.createElement('div');
+    card.className = 'image-card';
+    // Crear elementos...
+    return card;
+}
+```
+
+## 🎨 Características de UI/UX
+
+- ✅ Indicador de carga animado
+- ✅ Manejo de errores con mensajes visuales
+- ✅ Animaciones suaves de entrada (fadeIn)
+- ✅ Hover effects en tarjetas e imágenes
+- ✅ Diseño responsive para móviles
+- ✅ Gradientes modernos y coloridos
+- ✅ Estadísticas en tiempo real
+
+## 🌐 APIs Utilizadas
+
+### The Cat API
+- **Endpoint**: `https://api.thecatapi.com/v1/images/search`
+- **Uso**: Obtener imágenes aleatorias y buscar por raza
+- **Sin autenticación requerida**
+
+### Dog CEO API
+- **Endpoint**: `https://dog.ceo/api/breeds/image/random`
+- **Uso**: Obtener imágenes aleatorias de perros
+- **Completamente gratuita**
+
+## 🔧 Posibles Mejoras
+
+- [ ] Agregar favoritos (localStorage)
+- [ ] Implementar paginación
+- [ ] Agregar más APIs (PokeAPI, Rick & Morty, etc.)
+- [ ] Sistema de filtros avanzados
+- [ ] Modo oscuro
+- [ ] Compartir imágenes en redes sociales
+- [ ] Descarga de imágenes
+
+## 📝 Notas Técnicas
+
+- Las APIs utilizadas son públicas y gratuitas
+- No se requiere API Key para uso básico
+- El código usa ES6+ features (asegúrate de usar un navegador moderno)
+- Todas las llamadas a la API incluyen manejo de errores
+
+## 👨‍💻 Autor
+
+Proyecto educativo para demostrar:
+- Consumo de APIs REST
+- Programación asíncrona en JavaScript
+- Diseño de interfaces interactivas
+- Manejo de estados en aplicaciones web
+
+## 📄 Licencia
+
+Proyecto de código abierto para fines educativos.
+
+---
+
+**¡Diviértete explorando gatos y perros! 🐱🐶**
