@@ -4,6 +4,17 @@
 
 Proyecto interactivo que demuestra el uso de APIs públicas, programación asíncrona en JavaScript y una interfaz de usuario dinámica.
 
+## 📸 Capturas de Pantalla
+
+### Menú Principal
+![Menú Principal](Capturas/Captura_Menu.png)
+
+### Gato Aleatorio
+![Gato Aleatorio](Capturas/Gato_Aleatorio.png)
+
+### 6 Imágenes Simultáneas
+![6 Imágenes](Capturas/6_Imagenes.png)
+
 ## 🚀 Características
 
 - ✨ **Interfaz moderna y responsiva** con animaciones CSS
